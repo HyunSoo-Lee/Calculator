@@ -1,5 +1,5 @@
 package Cal;
-//for test, does it change?
+
 import java.util.Scanner;
 
 public class Main extends Functions {
