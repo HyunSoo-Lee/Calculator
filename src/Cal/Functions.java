@@ -1,5 +1,7 @@
 package Cal;
 
+import java.util.ArrayList;
+
 public class Functions extends Basic_Stack_Functions{
 	static int check_matching(String str) {
 		Stacktype s;
@@ -48,7 +50,7 @@ public class Functions extends Basic_Stack_Functions{
 		return -1;
 	}
 	
-	static void infix_to_postfix(String str) {
+	static void infix_to_postfix(String str, ArrayList<Integer>postfix) {
 		Stacktype s;
 		s = new Stacktype();
 		
@@ -66,7 +68,8 @@ public class Functions extends Basic_Stack_Functions{
 			switch(ch) {
 			case'+': case'-': case'*': case'/': case'^':
 				while(!is_empty(s) && (prec(ch) <= prec(peek(s))))
-					System.out.printf("%c", pop(s));
+					//System.out.printf("%c", pop(s));
+					postfix.add(pop(s));
 				push(s, ch);
 				break;
 			case'(': 
@@ -75,7 +78,8 @@ public class Functions extends Basic_Stack_Functions{
 			case')':
 				top_op = pop(s);
 				while(top_op != '(') {
-					System.out.printf("%c",  top_op);
+					//System.out.printf("%c",  top_op);
+					postfix.add(top_op);
 					top_op = pop(s);
 				}
 				break;
@@ -85,7 +89,8 @@ public class Functions extends Basic_Stack_Functions{
 			case'}':
 				top_op = pop(s);
 				while(top_op != '{') {
-					System.out.printf("%c", top_op);
+					//System.out.printf("%c",  top_op);
+					postfix.add(top_op);
 					top_op = pop(s);
 				}
 				break;
@@ -95,7 +100,8 @@ public class Functions extends Basic_Stack_Functions{
 			case']':
 				top_op = pop(s);
 				while(top_op != '[') {
-					System.out.printf("%c", top_op);
+					//System.out.printf("%c",  top_op);
+					postfix.add(top_op);
 					top_op = pop(s);
 				}
 				break;
