@@ -106,7 +106,12 @@ public class Functions extends Basic_Stack_Functions{
 				}
 				break;
 			default:
-				System.out.printf("%c", ch);
+				do{
+					postfix.add(ch);
+					ch = expression[++i];
+				} while (ch >= 0 && ch <= 9);
+				postfix.add((int) ' ');
+				i--;
 				break;
 			}
 		}
